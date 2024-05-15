@@ -1,0 +1,2 @@
+Hello! My name is $guide_name.
+Could you please tell me your name?

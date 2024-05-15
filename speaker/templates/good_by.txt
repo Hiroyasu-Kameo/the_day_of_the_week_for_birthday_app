@@ -1,0 +1,3 @@
+$guide_name: Thank you very much, $user_name.
+
+Have a nice day! Bye.
