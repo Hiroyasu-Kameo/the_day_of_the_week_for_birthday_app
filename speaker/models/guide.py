@@ -4,33 +4,33 @@ import sys
 from decimal import *
 
 
-"""Defined a robot model """
+"""Defined a guide model """
 from speaker.views import console
 
-DEFAULT_ROBOT_NAME = 'Lucia'
+DEFAULT_GUIDE_NAME = 'Asato'
 
 
-class Robot(object):
-    """Base model for Robot."""
+class Guide(object):
+    """Base model for Guide."""
 
-    def __init__(self, name=DEFAULT_ROBOT_NAME, user_name='', speak_color='blue'):
+    def __init__(self, name=DEFAULT_GUIDE_NAME, user_name='', speak_color='light_blue'):
         self.name = name
         self.user_name = user_name
         self.speak_color = speak_color;
 
     def hello(self):
-        """Returns words to the user that the robot speaks at the beginning."""
+        """Returns words to the user that the guide speaks at the beginning."""
         while True:
             template = console.get_template('hello.txt', self.speak_color)
             user_name = input(template.substitute({
-                'robot_name': self.name}))
+                'guide_name': self.name}))
 
             if user_name:
                 self.user_name = user_name.title()
                 break
 
-class TalkRobot(Robot):
-    def __init__(self, name=DEFAULT_ROBOT_NAME):
+class TalkGuide(Guide):
+    def __init__(self, name=DEFAULT_GUIDE_NAME):
         super().__init__(name=name)
 
     def _hello_decorator(func):
@@ -42,24 +42,24 @@ class TalkRobot(Robot):
         return wrapper
 
     @_hello_decorator
-    def day_of_the_week_for_birthday(self):
+    def the_day_of_the_week_for_birthday(self):
         while True:
             template = console.get_template('what_year.txt', self.speak_color)
-            year = input(template.substitute({'robot_name': self.name}))
+            year = input(template.substitute({'guide_name': self.name}))
 
             if year and(int(year) >= 1):
                 break
 
         while True:
             template = console.get_template('what_month.txt', self.speak_color)
-            month = input(template.substitute({'robot_name': self.name}))
+            month = input(template.substitute({'guide_name': self.name}))
 
             if month and(int(month) >= 1 and int(month) <= 12):
                 break
 
         while True:
             template = console.get_template('what_day.txt', self.speak_color)
-            date = input(template.substitute({'robot_name': self.name}))
+            date = input(template.substitute({'guide_name': self.name}))
 
             if date and(int(date) >= 1 and int(date) <= 31):
                 break
@@ -80,7 +80,7 @@ class TalkRobot(Robot):
 
         template = console.get_template('birth_week.txt', self.speak_color)
         print(template.substitute({
-            'robot_name': self.name,
+            'guide_name': self.name,
             'week': week[int(h)]
         }))
 
@@ -89,6 +89,6 @@ class TalkRobot(Robot):
         """Show words of appreciation to users."""
         template = console.get_template('good_by.txt', self.speak_color)
         print(template.substitute({
-            'robot_name': self.name,
+            'guide_name': self.name,
             'user_name': self.user_name
         }))

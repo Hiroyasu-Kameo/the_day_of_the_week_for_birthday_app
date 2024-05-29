@@ -1,10 +1,10 @@
-"""Controller for speaking with robot"""
-from speaker.models import robot
+"""Controller for speaking with guide"""
+from speaker.models import guide
 
 
 def talk():
     """Function to speak with hello"""
-    talk_robot = robot.TalkRobot()
-    talk_robot.hello()
-    talk_robot.day_of_the_week_for_birthday()
-    talk_robot.thank_you()
+    talk_guide = guide.TalkGuide()
+    talk_guide.hello()
+    talk_guide.the_day_of_the_week_for_birthday()
+    talk_guide.thank_you()
